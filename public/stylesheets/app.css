@@ -1,13 +1,14 @@
 header {
-    background-color: #244751;
-    color: #E8FDFF;
-    font-family: 'Dancing Script', cursive;
+    background-color: #000;
+    color: #FFFFFF;
+    font-family: 'Helvetica', san-serif;
+    font-size: 20px;
 }
 
 body {
-    background-color:whitesmoke;
-    font-family: 'Arial', sans-serif;
-    /* the original finstagram font is Roboto Condensed */
+    background-color: white;
+    font-family: 'Helvetica', sans-serif;
+  
 }
 
 main {
@@ -15,19 +16,20 @@ main {
     padding: 16px;
 }
 
-.finstagram-post {
-    margin-bottom: 48px;
+h1{
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 60px;
+    text-transform:uppercase;
 }
+a:hover{
+    text-decoration: underline;
 
-.finstagram-post .user-info img {
-    border-radius: 50%;
 }
-
-a.photo{
-    transition: padding 0.5s;
-}
-a.photo:hover{
-    padding: 10px;
-
+.refresh{
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 60px;
+    text-transform:uppercase;
 }
 

@@ -1,15 +1,19 @@
-<% if current_user %>
-    <div class="new-finstagram-post">
-        <a href="/finstagram_posts/new" class="button">New Post</a>
-    </div>
-<% end %>
 
-<% @finstagram_posts.each do |finstagram_post| %>
-    <%= erb(:'shared/finstagram_post', { locals: { finstagram_post: finstagram_post }}) %>
-<% end %>
+<h1> <%= @rand_header %> </h1>
 
+<h1>
+    <!-- random link on job bank between 1 and 27310 -->
+    <a href="https://www.jobbank.gc.ca/marketreport/summary-occupation/<%= rand(1..27310) %>/ca" target="_blank">SPORTS PROGRAM SUPERVISOR</a> 
+</h1>
 
+<br>
+<br>
 
+<!-- just reloads the page -->
+<a class="refresh" href="/"> Give me another fucking idea.</a>
+<br>
+<!-- would somehow remember that you don't like those kinds of jobs, NOC number? -->
+<a class="refresh" href="/"> No fucking way I'll do that.</a>
 
-
+    
 
