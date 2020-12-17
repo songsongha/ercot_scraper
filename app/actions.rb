@@ -1,3 +1,4 @@
+require 'wombat'
 
 #get '/' do
     # reads the index.html file in app/views
@@ -13,15 +14,20 @@ get '/' do
     @rand_header = wtf_header[rand(wtf_header.length)]
     @rand_job = rand(1..27310)
      
-    @pathname = "/marketreport/summary-occupation/"
-    @pathname.concat("#{@rand_job}", "/ca")
+    @path = "/marketreport/summary-occupation/"
+    @path.concat("16", "/ca")
 
-    scraper = Scraper.new()
-    scraper.crawl.to_json
-    
-    #erb(:index)
+    @job = Wombat.crawl do
+   base_url "https://www.jobbank.gc.ca"
+    path "#{@path}"
+  
+    job_title "css=.heading-info"
+end
 
-
+   # scraper = Scraper.new(path)
+    #@job = scraper.crawl
+    @job.to_json
+  # erb(:index)
 end
 
  
