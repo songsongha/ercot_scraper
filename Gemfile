@@ -11,8 +11,7 @@ gem 'sinatra-activerecord'
 
 gem 'puma'
 gem 'tux'
-gem 'upton' # how do I install this gem??
-gem 'wombat'
+gem 'mechanize'
 
 group :development, :test do
   gem 'pry'
