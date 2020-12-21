@@ -1,19 +1,14 @@
-require 'wombat'
+require 'mechanize'
 
 class Scraper 
-    def initialize(path)
+    def initialize(base_url, path)
+        @base_url = base_url
         @path = path
+        @agent = Mechanize.new
     end
 
-    def get
-    include Wombat::Crawler
-    base_url "https://www.jobbank.gc.ca"
-    path "#{@path}"
-  
-    job_title "css=.heading-info"
-   # stats do |title|
-       # title.dev_number "css=.home-hero .col-sm-4.col-md-3 h2"
-  #  end
+    def search(selector)
+        @agent.get("#{@base_url}#{@path}").search(selector).text
     end
+
 end
-
