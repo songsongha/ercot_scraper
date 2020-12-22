@@ -1,48 +1,28 @@
-@media screen and (max-width: 1200px) 
-main {
+@media screen and (max-width: 1200px) {
+  main {
     width: 60%;
   }
 }
 
-/* Viewports smaller than 700 pixels */
-@media screen and (max-width: 700px) {
-h1{
-    color: seagreen
-}
-  header {
-    display: flex;
-    align-items: center;
-  }
-
-  header h1 {
-    font-size: 1.5em;
-  }
-
-  header .login-info {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.85em;
-  }
-
-  header .login-info a {
-    padding: 5px 0;
-  }
-
+/* Viewports smaller than 800 pixels */
+@media screen and (max-width: 800px) {
   main {
+    width: 80%;
+  }
+}
+
+/* Viewports smaller than 800 pixels */
+@media screen and (max-width: 600px) {
+    main {
     width: 90%;
   }
+    h1{
+        font-size: 30px;
+        line-height: 30px;
+    }
 
-  .user-info {
-    align-items: center;
-  }
-
-  .user-info h2 {
-    font-size: 1em;
-  }
-
-  .user-info h3 {
-    font-size: 0.65em;
-  }
-
+    .refresh{
+    font-size: 13px;
+    line-height: 40px;
+    }
 }
-
