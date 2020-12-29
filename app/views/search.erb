@@ -1,0 +1,44 @@
+<h1>What the fuck do you want then?</h1>
+
+<form method = "POST" action="/search">
+<h1>
+    <%=@wages%>
+    <br>
+    <%=@requirements%>
+    <br>
+    <%=@num_posts%>
+    <br>
+    </h1>
+    <div class="form-group">
+        <label for="wage">I fucking want to make more than $</label> 
+        <input type = "text" id="wage" name="wage" value= "10/hr">
+         <select name="unit">
+        <option value="per hour">per hour</option>
+        <option value="per year"> per year</option>
+        </select>
+    </div>
+    <div class="form-group">
+    <p> and the fucking education requirements should be: </p><br>
+        <input type="checkbox" name="requirements[]" id="university" value="university">
+        <label for="university"> University </label><br>
+        <input type="checkbox" name="requirements[]" id="college"  value="college">
+        <label for="college"> College or apprenticeship </label><br>
+        <input type="checkbox" name="requirements[]" id="highschool"  value="highschool">
+        <label for="highschool"> High school or specific training </label><br>
+        <input type="checkbox" name="requirements[]" id="on_the_job"  value="on_the_job">
+        <label for="on_the_job"> On the job training </label><br><br>
+    </div>
+    <div class="form-group">
+        <label for="num_posts">and there should be more than</label>
+        <input type="number" id="num_posts" name="num_posts" value=<%= @num_posts %>>
+        <label for "num_posts"> fucking postings!</label>
+    </div> 
+    <div class="form-group">
+        <button type="submit">Give me another fucking option</button>
+        <button type="submit">Give me 10 fucking options</button>
+    </div>
+</form>
+
+<br>
+<br>
+

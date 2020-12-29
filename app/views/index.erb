@@ -3,7 +3,22 @@
 
 <h1>
     <!-- random link on job bank between 1 and 27310 -->
-    <a href=<%="#{@website}"%> target="_blank"><%=@job_title[0]%></a> 
+    <a href=<%="#{@website}"%> target="_blank"><%=@job_title%></a> 
+    <br>
+    <%=@wage_string%>
+    <%=@wage%>
+    <%=@wage.is_a? Float %>
+    <br>
+    <%=@wage_unit%>
+    <br>
+    <%=@education%>
+    <br>
+    <%=@num_posts%>
+    <br>
+    <%=@wage_hour%>
+    <br>
+    <%=@wage_year%>
+    
 </h1>
 
 <br>
@@ -12,7 +27,7 @@
 <!-- just reloads the page -->
 <a class="refresh" href="/"> Give me another fucking idea.</a>
 <br>
-<a class="refresh" href="/"> No fucking way I'll do that.</a>
+<a class="refresh" href="/search"> No fucking way I'll do that.</a>
 
     
 
