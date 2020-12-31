@@ -3,11 +3,15 @@ require 'mechanize'
 class Scraper 
     def initialize(url)
         @url = url
-        @agent = Mechanize.new
+        @agent = self.get
+    end
+
+    def get
+    Mechanize.new.get("#{@url}")
     end
 
     def search(selector)
-        @agent.get("#{@url}").search(selector).text
+        @agent.search(selector).text
     end
 
 end

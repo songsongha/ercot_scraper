@@ -1,0 +1,17 @@
+<h1> How about any of these? </h1>
+
+<% @query_10.each do |query_10| %>
+    <h2>
+     <a href=<%="#{query_10.url}"%> target="_blank"><%=query_10.job_title%></a>
+    </h2>
+<% end %>
+
+<br>
+<br>
+
+<!-- just reloads the page -->
+<a class="refresh" href="/"> Give me another fucking idea.</a>
+<br>
+<a class="refresh" href="/search"> No fucking way I'll do any of these things.</a>
+
+
