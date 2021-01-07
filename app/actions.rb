@@ -109,27 +109,34 @@ post '/search' do
     wage_unit = params[:wage_unit]
     education = params[:education] #need to check for errors, user must check at least 1
     num_posts = params[:num_posts]
-    num_options = params[:num_options]
+    @num_options = params[:num_options]
     
     if wage_unit == "hour"
         @query = Job.where("num_posts >= ? AND wage_hour > ? AND education IN (?)", num_posts, wage, education)
-    elsif wage_unit == "year"
+    else 
         @query = Job.where("num_posts >= ? AND wage_year > ? AND education IN (?)", num_posts, wage, education)
-    else
-        @query = []
     end
-    
-    @rand_query = rand(@query.length)
-    if @query.present? && num_options == "1"
-        erb(:display1)
-    elsif @query.present? && num_options == "10"
-        @query_10 = @query.limit(10).order("RANDOM()")
-        erb(:display10)
+
+    if @query.present?
+        erb(:displaytest)
     else
         @error_message = "No job in Canada fucking meets those standards"
         erb(:search)
-
     end
+
+    
+
+    # @rand_query = rand(@query.length)
+    # if @query.present? && num_options == "1"
+    #     erb(:display1)
+    # elsif @query.present? && num_options == "10"
+    #     @query_10 = @query.limit(10).order("RANDOM()")
+    #     erb(:display10)
+    # else
+    #     @error_message = "No job in Canada fucking meets those standards"
+    #     erb(:search)
+
+    # end
     
 end
 
