@@ -1,4 +1,5 @@
-<h1> How about any of these? <br>
+<h1> Then be a fucking </h1>
+<h1>
  <% query = @query.limit(1).order("RANDOM()") %>
 <%  query.each do |entry| %>
     <ul>
@@ -6,6 +7,7 @@
     </ul>
 <% end %>
 </h1>
+<%= @education %>
 <br>
 <br>
 
@@ -14,7 +16,7 @@
 <br>
 <a class="action" id ="link10"> Show me a bigger fucking list.</a>
 <br>
-<a class="action" href ="/search"> No way in hell I'll do any of these.</a>
+<a class="action" href ="/search"> No way in hell I'll do that.</a>
 
     <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -22,22 +24,24 @@
   crossorigin="anonymous"></script>
 
 <script>
-    console.log("program reading the script");
+   
     const link10 = document.getElementById("link10");
     const jobList = document.querySelector("ul");
     const refresh = document.getElementById("refresh");
     const database = <%= @query.to_json %>;
- 
+    const header = document.querySelector("h1");
+    console.log(database);
+
     function toggleListSize(e) {
 
         if (jobList.className === "list_ten") {
             deleteJobEntries(2);
             refresh.innerHTML = "Give me another fucking idea";
             link10.innerHTML = "Show me a bigger fucking list";
+            header.innerHTML = randHeader();
         }
         else {
-            var query = <%= @query.limit(9).order("RANDOM()").to_json %>;
-            addJobEntries(query);
+            addRandJob(9);
             refresh.innerHTML = "Give me some new fucking ideas";
             link10.innerHTML = "That's too many fucking options";
         }
@@ -66,38 +70,42 @@ function deleteJobEntries(num) {
 }
 
 function refreshList(){
-    var query = [];
     deleteJobEntries(1);
     if (jobList.className === "list_ten") {
-        query = randArray(database, 10);
-       
+        addRandJob(10);  
     }
     else {
-        query = randArray(database, 1);
+        addRandJob(1);    
     }
-    addJobEntries(query);
-    
+    header.innerHTML = randHeader();
+  
 }
 
-function randArray (array , length) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+function addRandJob (length) {
+    let array = database
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+        randomIndex = random(currentIndex);
+        currentIndex -= 1;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-array.slice(0,length)
-  return array;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    array = array.slice(0,length);
+    addJobEntries(array);
 }
 
+function randHeader(){
+    let header = ["Be a fucking", "Why don't you be a god damn", "How about a fucking", "Lessen your family's shame by being a"];
+    header = header[random (header.length)];
+    return header;
+}
+
+function random(num) {
+    let randomNum = Math.floor(Math.random()* num);
+    return randomNum;
+}
 
 
 link10.addEventListener("click", toggleListSize);
