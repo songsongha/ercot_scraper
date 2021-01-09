@@ -26,6 +26,7 @@
     const link10 = document.getElementById("link10");
     const jobList = document.querySelector("ul");
     const refresh = document.getElementById("refresh");
+    const database = <%= @query.to_json %>;
  
     function toggleListSize(e) {
 
@@ -41,6 +42,7 @@
             link10.innerHTML = "That's too many fucking options";
         }
         jobList.classList.toggle("list_ten");
+    
     }    
 
    function addJobEntries(query) {
@@ -59,20 +61,44 @@
 
 function deleteJobEntries(num) {
     while (jobList.childNodes.length > num) {
-        jobList.removeChild(jobList.lastChild);
+                jobList.removeChild(jobList.lastChild);
     }	
 }
 
 function refreshList(){
+    var query = [];
     deleteJobEntries(1);
     if (jobList.className === "list_ten") {
-        var query = <%= @query.limit(10).order("RANDOM()").to_json %>; 
+        query = randArray(database, 10);
+       
     }
     else {
-        var query = <%= @query.limit(1).order("RANDOM()").to_json %>;
+        query = randArray(database, 1);
     }
     addJobEntries(query);
+    
 }
+
+function randArray (array , length) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+array.slice(0,length)
+  return array;
+}
+
+
 
 link10.addEventListener("click", toggleListSize);
 refresh.addEventListener("click", refreshList);
