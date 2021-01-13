@@ -11,7 +11,7 @@
   }
 }
 
-/* Viewports smaller than 800 pixels */
+/* Viewports smaller than 600 pixels */
 @media screen and (max-width: 600px) {
     main {
     width: 90%;
@@ -21,7 +21,7 @@
         line-height: 30px;
     }
 
-    .refresh{
+    .action{
     font-size: 13px;
     line-height: 40px;
     }

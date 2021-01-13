@@ -9,15 +9,13 @@
 <form method = "GET" action="/search_results" onsubmit="return checkIfFormFilled()">
 
     <div class="form-group">
-        <label for="wage">I fucking want to make more than $</label> 
+        <label for="wage">A job that pays more than $</label> 
         <input type = "number" id="wage" name="wage" value= "25">
          <select name="wage_unit">
-        <option value="hour">per hour</option>
-        <option value="year"> per year</option>
+            <option value="hour">per hour</option>
+            <option value="year">per year</option>
         </select>
-    </div>
-    <div class="form-group">
-    <p> and the fucking education requirements should be: </p><br>
+        <p> with education requirements like: </p>
         <input type="checkbox" class = "checkbox" name="education[]" id="university" value="University">
         <label for="university"> University </label><br>
         <input type="checkbox" class = "checkbox" name="education[]" id="college"  value="College or apprenticeship">
@@ -25,18 +23,18 @@
         <input type="checkbox" class = "checkbox" name="education[]" id="highschool"  value="High school or specific training">
         <label for="highschool"> High school or specific training </label><br>
         <input type="checkbox" class = "checkbox" name="education[]" id="on_the_job"  value="On-the-job training">
+        
         <label for="on_the_job"> On the job training </label><br><br>
-    </div>
-    <div class="form-group">
-        <label for="num_posts">and there should be more than</label>
+        <label for="num_posts">with more than</label>
         <input type="number" id="num_posts" name="num_posts" value=1>
-        <label for "num_posts"> fucking postings!</label>
+        <label for "num_posts"> fucking job posting(s).</label>
     </div> 
-    <div class="form-group">
-        <button type="submit">Show me my fucking options</button>
+ 
+        <button class="action" type="submit">Show me that fucking job.</button>
       
-    </div>
+
 </form>
+<a class="action" href="/"> I don't fucking care. </a>
 
     <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -78,7 +76,7 @@ function checkEducation(){
         }
     });   
     if (acc === false){
-        alert("Education requirement needed, if you don't fucking care check all the boxes");
+        alert("Education requirement needed. if you don't fucking care about that, check all the boxes");
         return false;
     }
     return true;
