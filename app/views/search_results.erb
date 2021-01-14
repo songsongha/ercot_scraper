@@ -7,14 +7,11 @@
     </ul>
 <% end %>
 </h1>
-<%= @education %>
-<br>
-<br>
 
 <!-- just reloads the page -->
 <a class="action" id="refresh"> Give me another fucking idea.</a>
 <br>
-<a class="action" id ="link10"> Show me a bigger fucking list.</a>
+<a class="action" id ="link5"> Show me a bigger fucking list.</a>
 <br>
 <a class="action" href ="/search"> No way in hell I'll do that.</a>
 
@@ -25,7 +22,7 @@
 
 <script>
    
-    const link10 = document.getElementById("link10");
+    const link5 = document.getElementById("link5");
     const jobList = document.querySelector("ul");
     const refresh = document.getElementById("refresh");
     const database = <%= @query.to_json %>;
@@ -34,18 +31,18 @@
 
     function toggleListSize(e) {
 
-        if (jobList.className === "list_ten") {
+        if (jobList.className === "list_five") {
             deleteJobEntries(2);
             refresh.innerHTML = "Give me another fucking idea.";
-            link10.innerHTML = "Show me a bigger fucking list.";
+            link5.innerHTML = "Show me a bigger fucking list.";
             header.innerHTML = randHeader();
         }
         else {
-            addRandJob(9);
+            addRandJob(4);
             refresh.innerHTML = "Give me some new fucking ideas.";
-            link10.innerHTML = "That's too many fucking options.";
+            link5.innerHTML = "That's too many fucking options.";
         }
-        jobList.classList.toggle("list_ten");
+        jobList.classList.toggle("list_five");
     
     }    
 
@@ -71,8 +68,8 @@ function deleteJobEntries(num) {
 
 function refreshList(){
     deleteJobEntries(1);
-    if (jobList.className === "list_ten") {
-        addRandJob(10);  
+    if (jobList.className === "list_five") {
+        addRandJob(5);  
     }
     else {
         addRandJob(1);    
@@ -108,7 +105,7 @@ function random(num) {
 }
 
 
-link10.addEventListener("click", toggleListSize);
+link5.addEventListener("click", toggleListSize);
 refresh.addEventListener("click", refreshList);
 
 </script>

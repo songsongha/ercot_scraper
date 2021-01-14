@@ -15,7 +15,7 @@
 @media screen and (max-width: 600px) {
     main {
     width: 90%;
-  }
+    }
     h1{
         font-size: 30px;
         line-height: 30px;
@@ -24,5 +24,13 @@
     .action{
     font-size: 13px;
     line-height: 40px;
+    }
+
+    form{
+    font-size: 13px;
+
+    }
+    .list_five {
+        font-size: 20px;
     }
 }
