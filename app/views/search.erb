@@ -10,7 +10,7 @@
 
     <div class="form-group">
         <label for="wage">A job that pays more than $</label> 
-        <input type = "number" id="wage" name="wage" value= "25">
+        <input type = "number" id="wage" name="wage">
          <select name="wage_unit">
             <option value="hour">per hour</option>
             <option value="year">per year</option>
@@ -26,7 +26,7 @@
         
         <label for="on_the_job"> On the job training </label><br><br>
         <label for="num_posts">with more than</label>
-        <input type="number" id="num_posts" name="num_posts" value=1>
+        <input type="number" id="num_posts" name="num_posts">
         <label for "num_posts"> fucking job posting(s).</label>
     </div> 
  
@@ -51,7 +51,7 @@ function checkIfFormFilled(){
 }
 
 function checkWage(){
-    if (document.getElementById("wage").value == ""){
+    if (document.getElementById("wage").value === ""){
         alert("Wage can't be blank. If you don't fucking care about how much money you'd make put in $0");
     return false;
     }
@@ -59,8 +59,8 @@ function checkWage(){
 }
 
 function checkNumPosts(){
-    if (document.getElementById("num_posts").value == ""){
-        alert("Number of postings can't be blank.  IF you don't fucking care if anyone is hiring right now put in 0.");
+    if (document.getElementById("num_posts").value === ""){
+        alert("Number of postings can't be blank.  If you don't fucking care if anyone is hiring right now put in 0.");
         return false;
     }
     return true;
@@ -76,7 +76,7 @@ function checkEducation(){
         }
     });   
     if (acc === false){
-        alert("Education requirement needed. if you don't fucking care about that, check all the boxes");
+        alert("Education requirement needed. If you don't fucking care about that, check all the boxes");
         return false;
     }
     return true;

@@ -25,7 +25,7 @@ get '/search_results' do
     wage_unit = params[:wage_unit]
     education = params[:education] 
     num_posts = params[:num_posts]
-        
+    
     if wage_unit == "hour"
         @query = Job.where("num_posts >= ? AND wage_hour > ? AND education IN (?)", num_posts, wage, education)
     else 
