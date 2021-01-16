@@ -1,5 +1,9 @@
 
 helpers do
+    def get_job(query)
+        @job_title = query.job_title
+        @url = query.url
+    end
 end
 
 
@@ -8,9 +12,7 @@ get '/' do
     wtf_header = ["Be a fucking", "Why don't you be a god damn", "How about a fucking", "Lessen your family's shame by being a"]
     @rand_header = wtf_header[rand(wtf_header.length)]
     
-    rand_job = Job.order('RANDOM()').first
-    @job_title = rand_job.job_title
-    @url = rand_job.url
+    get_job(Job.order('RANDOM()').first)
     erb(:index)
     
 end
@@ -33,12 +35,14 @@ get '/search_results' do
     end
         
     if @query.present?
+        get_job(@query.limit(1).order("RANDOM()")[0])
         erb(:search_results)
     else
         @error_message = "No job in Canada fucking meets those requirements"
         erb(:search)
     end
     
+
 end
 
 get '/scrape' do

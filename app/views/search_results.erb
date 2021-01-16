@@ -1,14 +1,12 @@
 <h1> Then be a fucking </h1>
+
 <h1>
- <% query = @query.limit(1).order("RANDOM()") %>
-<%  query.each do |entry| %>
-    <ul>
-        <li><a href=<%="#{entry.url}"%> target="_blank"><%=entry.job_title%></a></li>
-    </ul>
-<% end %>
+<ul>
+    <li><a href=<%="#{@url}"%> target="_blank"><%=@job_title%></a></li>
+</ul> 
 </h1>
 
-<!-- just reloads the page -->
+
 <a class="action" id="refresh"> Give me another fucking idea.</a>
 <br>
 <a class="action" id ="link5"> Show me a bigger fucking list.</a>

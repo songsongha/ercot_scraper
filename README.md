@@ -10,7 +10,7 @@ This project used Ruby, Javascript, HTML, CSS and includes the following compone
     Asychronous/multi-threaded programming
     Ensuring complete user inputs using Javascript
     Database query
-    Restricting user access to admin areas
+    Restricting user access to admin areas with secure passwords
     Interactive display changes using Javascript
     Responsive layouts
 

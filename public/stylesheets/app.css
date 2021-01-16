@@ -55,13 +55,16 @@ button.action {
 button:hover{
     text-decoration: underline;
 }
+button:focus{
+    outline: none;
+}
 
 #wage {
-    width: 60px;
+    width: 4em;
 }
 
 #num_posts {
-width: 25px;
+width: 1.5em;
 }
 
 #footer {
