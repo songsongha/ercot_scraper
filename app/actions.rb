@@ -55,14 +55,22 @@ post '/scrape' do
     admin = Admin.find_by_id(1)
 
 if admin.authenticate(password)
+    lower_range = params[:lower_range]
+    upper_range = params[:upper_range]
+    
+
     require 'thread/pool'
     pool = Thread.pool(15)
 
     database = []
-    (1..27350).each do |n|
+    (lower_range..upper_range).each do |n|
         url =  "https://www.jobbank.gc.ca/marketreport/summary-occupation/"
         url.concat("#{n}", "/ca")
-        
+        entry = Job.find_by(url: url)
+        if entry.present?
+            entry.destroy
+        end
+
         pool.process do
             scraper = Scraper.new(url)
             job_title =  scraper.search(".heading-info").strip
