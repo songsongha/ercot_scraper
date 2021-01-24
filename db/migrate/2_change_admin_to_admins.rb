@@ -1,4 +1,4 @@
-class ChangeAdminToAdmins< ActiveRecord::Migration[5.2]
+class ChangeAdminToAdmins< ActiveRecord::Migration
 
   def change
   rename_table :admin, :admins

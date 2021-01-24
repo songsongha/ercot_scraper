@@ -1,4 +1,4 @@
-class CreateBaseTables < ActiveRecord::Migration[5.2]
+class CreateBaseTables < ActiveRecord::Migration
 
   def change
     create_table :jobs do |t|

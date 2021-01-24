@@ -1,4 +1,4 @@
-class AddUserTable< ActiveRecord::Migration[5.2]
+class AddUserTable< ActiveRecord::Migration
 
   def change
     create_table :admins do |t|
