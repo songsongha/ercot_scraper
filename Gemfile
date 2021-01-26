@@ -18,8 +18,8 @@ gem 'bcrypt'
 gem 'pry'
 
 group :development, :test do
-  gem 'shotgun'
-  gem 'sqlite3'
+    gem 'shotgun'
+    gem 'sqlite3', '~> 1.3.6'
 end
 
 group :production do
