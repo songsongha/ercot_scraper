@@ -4,6 +4,7 @@ source "https://rubygems.org"
 gem 'rake'
 gem 'activesupport'
 gem 'activerecord'
+gem 'activerecord-import'
 gem 'thread'
 
 gem 'sinatra'
