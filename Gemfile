@@ -3,8 +3,7 @@ source "https://rubygems.org"
 
 gem 'rake'
 gem 'activesupport'
-gem 'activerecord', '~> 4.2.0'
-gem 'activerecord-import', '~> 0.15.0'
+gem 'activerecord'
 gem 'thread'
 
 gem 'sinatra'
@@ -23,6 +22,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '~> 0.20'
+  gem 'pg'
   gem 'rails_12factor'
 end
