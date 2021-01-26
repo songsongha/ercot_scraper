@@ -19,10 +19,10 @@ gem 'pry'
 
 group :development, :test do
     gem 'shotgun'
-    gem 'sqlite3', '~> 1.3.6'
+    gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg', '~> 0.20'
+  gem 'pg'
   gem 'rails_12factor'
 end
