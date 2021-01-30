@@ -107,7 +107,7 @@ post '/scrape' do
             end
         end 
         pool.shutdown 
-        Job.import database
+        # Job.import database
         @message = "Scraping complete"
     else
         @message = "Incorrect Password"

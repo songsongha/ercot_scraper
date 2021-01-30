@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 require 'active_support/all'
-require 'activerecord-import'
+# require 'activerecord-import'
 
 # Load Sinatra Framework (with AR)
 require 'sinatra'
