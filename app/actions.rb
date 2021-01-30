@@ -1,8 +1,13 @@
 
 helpers do
     def get_job(query)
+        if query.present?
         @job_title = query.job_title
         @url = query.url
+        else
+            @job_title = "Radio Time Buyer in Canada"
+            @url = "https://www.jobbank.gc.ca/marketreport/summary-occupation/555/ca"
+        end
     end
 end
 
