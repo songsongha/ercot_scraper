@@ -1,72 +1,91 @@
+    require 'mechanize'
+    require 'csv'
 
 helpers do
-    # def get_job(query)
-    #     if query.present?
-    #     @job_title = query.job_title
-    #     @url = query.url
-    #     else
-    #         @job_title = "Radio Time Buyer in Canada"
-    #         @url = "https://www.jobbank.gc.ca/marketreport/summary-occupation/555/ca"
-    #     end
-    # end
+  def scrape_page (url)
+        mechanize = Mechanize.new
+        page = mechanize.get(url)
+        draw_dates = page.search('.archive-date-link')
+        #for each draw date scrape and store the date then click the linked get the data from each
+        draw_dates.each do |draw_date|
+            date = draw_date.text.strip
+            link = page.link_with(text: date)
+            detail_page_url = link.click.uri
+            mechanize = Mechanize.new
+            #scrape details for a specific draw date
+            detail_page = mechanize.get(detail_page_url)
+            result_array = []
+            result_array << date
+            #extract and store draw result in an array with each index referring to a draw position
+            draw_results = detail_page.search('.topBox .balls li')
+            draw_results.each do |draw_result|
+                result_array << draw_result.text.strip
+            end
+            CSV.open("main_draw.csv", "a") do |main_csv|
+                main_csv << result_array
+            end  
+
+            #extract and store payout info
+            table_info = detail_page.search('td.textRight')
+            table_array = [] #payout and winner data
+            payout_array = []
+            payout_array << date
+            table_info.each do |item|
+                table_array << item.text.strip
+            end
+            table_array.each_with_index do|val, index|
+                if index % 2 == 0
+                payout_array << val.tr("$,","")
+                end
+            end 
+            CSV.open("payout.csv", "a") do |payout_csv|
+                payout_csv << payout_array
+            end
+
+            #extract and store max million results if they exist
+            max_millions = detail_page.search('.max-millions-result')
+            if max_millions.present?
+                max_million_array = [] #an array of arrays each index is a group of max million results
+                max_millions.each do |result| # for each result on the page get the individual result
+                    max_million = result.search('.balls li')
+                    result_array = [] #each index refers to a draw position
+                    result_array << date
+                    max_million.each do |result|
+                        result_array << result.text.strip
+                    end
+                    CSV.open("max_million.csv", "a") do |max_csv|
+                        max_csv << result_array
+                    end
+                end
+            end
+        end  
+    end
+
 end
 
 
 get '/' do    
     #  erb(:index)
     # require './lib/scraper'
-    require 'mechanize'
-    require 'csv'
-    # set headers for CSV files
+
+    #set headers for CSV files
      CSV.open("max_million.csv", "w") do |max_csv|
         max_csv << ["date", "pos1", "pos2", "pos3", "pos4","pos5", "pos6", "pos7"]
      end
      CSV.open("main_draw.csv", "w") do |main_csv|
         main_csv << ["date", "pos1", "pos2", "pos3", "pos4","pos5", "pos6", "pos7", "bonus"]
      end
+     CSV.open("payout.csv", "w") do |payout_csv|
+        payout_csv << ["date", "m7", "m6_bonus", "m6", "m5_bonus","m5", "m4_bonus", "m4", "m3_bonus", "m3"]
+     end
 
-    url = "https://www.lottomaxnumbers.com/past-numbers"
-    mechanize = Mechanize.new
-    page = mechanize.get(url)
-    draw_dates = page.search('.archive-date-link')
-    #for each draw date scrape and store the date then click the linked get the data from each
-    draw_dates.each do |draw_date|
-        date = draw_date.text.strip
-        link = page.link_with(text: date)
-        detail_page_url = link.click.uri
-        mechanize = Mechanize.new
-        #scrape details for a specific draw date
-        detail_page = mechanize.get(detail_page_url)
-        result_array = []
-        result_array << date
-        #extract and store draw result in an array with each index referring to a draw position
-        draw_results = detail_page.search('.topBox .balls li')
-        draw_results.each do |draw_result|
-            result_array << draw_result.text.strip
-        end
-        
-        CSV.open("main_draw.csv", "a") do |main_csv|
-            main_csv << result_array
-        end  
-        #extract and store max million results if they exist
-        max_millions = detail_page.search('.max-millions-result')
-        if max_millions.present?
-            max_million_array = [] #an array of arrays each index is a group of max million results
-            max_millions.each do |result| # for each result on the page get the individual result
-                max_million = result.search('.balls li')
-                result_array = [] #each index refers to a draw position
-                result_array << date
-                max_million.each do |result|
-                    result_array << result.text.strip
-                end
-                CSV.open("max_million.csv", "a") do |max_csv|
-                    max_csv << result_array
-                end
-            end
-        end
-  
-    end  
 
+    (2009..2021).each do |n|
+        url = "https://www.lottomaxnumbers.com/numbers/"
+        url.concat("#{n}")
+        scrape_page(url)
+    end
+    puts "done"
 end   
  
       #     link = page.link_with(text: 'Prev')
