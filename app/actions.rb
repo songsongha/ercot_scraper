@@ -28,13 +28,13 @@ helpers do
             #extract and store payout info
             table_info = detail_page.search('td.textRight')
             table_array = [] #payout and winner data
-            payout_array = []
+            payout_array = [] #payout data only
             payout_array << date
             table_info.each do |item|
                 table_array << item.text.strip
             end
             table_array.each_with_index do|val, index|
-                if index % 2 == 0
+                if index % 2 == 0 # remove every other entry (winner data)
                 payout_array << val.tr("$,","")
                 end
             end 
@@ -79,7 +79,7 @@ get '/' do
         payout_csv << ["date", "m7", "m6_bonus", "m6", "m5_bonus","m5", "m4_bonus", "m4", "m3_bonus", "m3"]
      end
 
-
+     # for each year scrape the all of the draw & prize data
     (2009..2021).each do |n|
         url = "https://www.lottomaxnumbers.com/numbers/"
         url.concat("#{n}")
