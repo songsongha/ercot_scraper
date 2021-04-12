@@ -1,18 +1,5 @@
-# WTF Should I Do For Work?
+# Lotto Scraper
 
+Built this script to help out a friend doing a data science course.  It scrapes all of the Lotto Max results including Max Million draws and the prize breakdown for each draw and puts it into a CSV. 
 
-For all you out there looking to pivot careers but struggling with the big question: If not this, then what? I built a website to help!!
-
-I used the Finstagram site I created as part of the Lighthouse Labs course as the base and turned it into this project :)
-
-This project used Ruby, Javascript, HTML, CSS and includes the following components:
-    Web scraping to a database
-    Asychronous/multi-threaded programming
-    Ensuring complete user inputs using Javascript
-    Database query
-    Restricting user access to admin areas with secure passwords
-    Interactive display changes using Javascript
-    Responsive layouts
-
-Always open to suggestions for code improvements!
 
